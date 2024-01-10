@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Giphy API</title>
+  </head>
+
+  <body>
+    <script>
+      // Example queryURL for Giphy API - API key MUST be included below
+      var queryURL =
+        "https://api.giphy.com/v1/gifs/trending?api_key=G84WGUZLTD3rhGeB8z8tfex93CVQTOns";
+
+      const newGiphyDisplay = async () => {
+        const res = await fetch(queryURL);
+        const data = await res.json();
+        let newIMG = document.createElement("img");
+        newIMG.setAttribute("src", data.data[0].images.original.url);
+        document.body.appendChild(newIMG);
+      };
+
+      newGiphyDisplay();
+
+      /*
+      fetch(queryURL)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          console.log(data);
+          console.log(data.data[0].url);
+
+          let newIMG = document.createElement("img");
+          newIMG.setAttribute("src", data.data[0].images.original.url);
+          document.body.appendChild(newIMG);
+        });
+        */
+    </script>
+  </body>
+</html>
+
+<!-- This code re-uses code provided by EDX on the front end bootcamp-->
